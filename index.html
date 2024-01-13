@@ -1,24 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div id="accepted" class="accepted">
-            <img src="https://media2.giphy.com/media/jbdcGm4scDfCpseGWU/giphy.gif?cid=ecf05e47ks0xhva6e9b9kgu6k89khgc29irjmgb06st10gs7&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="">
-            <p>Thank You !!</p>
-        </div>
-        <img id="img" src="https://media0.giphy.com/media/6CVswKPkqHg9OGDVkm/giphy.gif?cid=ecf05e47p9gmgq05swn8egz4ad1cyinfxopfyh7um3otub97&ep=v1_gifs_search&rid=giphy.gif&ct=g">
-        <p>Do you love me?</p>
-        <div class="btnContainer">
-            <button class="btn" id="btnYes">❤️ Yes</button>
-            <button class="btn btn-no" id="btnNo">⛔ No</button>
-        </div>
+      <div id="accepted" class="accepted">
+        <img
+          src="https://media2.giphy.com/media/jbdcGm4scDfCpseGWU/giphy.gif?cid=ecf05e47ks0xhva6e9b9kgu6k89khgc29irjmgb06st10gs7&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+          alt=""
+        />
+        <p>Thank You !!</p>
+      </div>
+      <img
+        id="img"
+        src="https://media0.giphy.com/media/6CVswKPkqHg9OGDVkm/giphy.gif?cid=ecf05e47p9gmgq05swn8egz4ad1cyinfxopfyh7um3otub97&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+      />
+      <p>Do you love me?</p>
+      <div class="btnContainer">
+        <button class="btn" id="btnYes">❤️ Yes</button>
+        <button class="btn btn-no" id="btnNo">⛔ No</button>
+      </div>
     </div>
-    <script src="./script.js" defer></script>
-</body>
+    <script>
+      const btnNo = document.getElementById("btnNo");
+      const btnYes = document.getElementById("btnYes");
+      const img = document.getElementById("img");
+      const accepted = document.getElementById("accepted");
+
+      btnNo.addEventListener("mouseenter", (e) => {
+        const rand = Math.random() * 100;
+
+        let top =
+          e.y + rand > e.pageY
+            ? e.y - rand > 0
+              ? e.y - rand
+              : e.y
+            : e.y + rand;
+        let bottom =
+          e.x + rand > e.pageX
+            ? e.x - rand > 0
+              ? e.x - rand
+              : e.pageX
+            : e.x + rand;
+        Object.assign(btnNo.style, {
+          position: "absolute",
+          top: top + "px",
+          left: bottom + "px",
+        });
+      });
+
+      btnNo.addEventListener("click", (e) => {
+        img.src =
+          "https://media1.giphy.com/media/6V2MqHAVpOlU57gFnL/giphy.gif?cid=ecf05e47vhjchibeziqdqkkc4jlz8gak6kvr69rv8k0yvqh8&ep=v1_gifs_related&rid=giphy.gif&ct=g";
+      });
+
+      btnYes.addEventListener("click", (e) => {
+        accepted.style.display = "flex";
+      });
+    </script>
+  </body>
 </html>
